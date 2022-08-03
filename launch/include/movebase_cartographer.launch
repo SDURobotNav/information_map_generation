@@ -1,0 +1,28 @@
+<!-- move base -->
+<launch>
+
+  <param name="use_sim_time" value="true" />
+
+<!-- -configuration_directory $(find cartographer_ros)/configuration_files -->
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find simulation_env)/launch/include/config/cartographer_config
+          -configuration_basename tic_mapping.lua"
+      output="screen">
+    <remap from="scan" to="scan" />
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+    <remap from="cmd_vel" to="robot/cmd_vel"/>
+    <rosparam file="$(find information_map)/config/move_base/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find information_map)/config/move_base/costmap_common_params_burger.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find information_map)/config/move_base/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find information_map)/config/move_base/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find information_map)/config/move_base/move_base_params.yaml" command="load" />
+  </node>
+
+</launch>

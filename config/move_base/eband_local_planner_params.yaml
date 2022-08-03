@@ -1,0 +1,78 @@
+EBandPlannerROS:
+  # max_vel_lin: 0.3
+  # min_vel_lin: 0.2
+  # max_vel_th: 0.4
+  # min_vel_th: 0.3
+
+  max_vel_lin: 0.5
+  min_vel_lin: 0.3
+  max_vel_th: 0.4
+  min_vel_th: 0.1
+  max_rotational_acceleration: 8.0 
+
+  # prune_plan: true
+
+  differential_drive: true
+
+  eband_min_relative_overlap: 0.7
+
+  eband_external_force_gain: 3.0
+
+  num_iterations_eband_optimization: 4
+
+  xy_goal_tolerance: 0.3
+  yaw_goal_tolerance: 3.1415
+
+  Ctrl_Rate: 30
+
+  eband_equilibrium_relative_overshoot: 0.01
+  k_damp: 4.0
+  k_prop: 3.0
+  
+
+
+# TrajectoryPlannerROS:
+#   #Set the acceleration limits of the robot
+#   acc_lim_th: 3.2 
+#   acc_lim_x: 2.5
+#   acc_lim_y: 2.5
+
+#   #Set the velocity limits of the robot
+#   max_vel_x: 0.65
+#   min_vel_x: 0.1
+#   max_rotational_vel: 1.0
+#   min_in_place_rotational_vel: 0.4
+
+#   #The velocity the robot will command when trying to escape from a stuck situation
+#   escape_vel: -0.1
+  
+#   holonomic_robot: false
+
+#   #When using a holonomic robot, we'll set the set of y velocities it will sample
+#   y_vels: [-0.3, -0.1, 0.1, -0.3]
+
+#   #Set the tolerance on achieving a goal
+#   xy_goal_tolerance: 1
+#   yaw_goal_tolerance: 0.9
+
+#   #To configure how long and with what granularity trajectories are forward simulated
+#   sim_time: 2
+#   sim_granularity: 0.025
+#   vx_samples: 20
+#   vtheta_samples: 80
+
+#   #Parameters for scoring trajectories
+#   meter_scoring: true
+#   gdist_scale: 1
+#   pdist_scale: 1.8
+#   occdist_scale: 0.05
+#   heading_lookahead: 0.325
+
+#   #To use the Dynamic Window Approach to control instead of Trajectory Rollout 
+#   dwa: true
+
+#   #How far the robot must travel before oscillation flags are reset
+#   oscillation_reset_dist: 0.05
+
+#   #Eat up the plan as the robot moves along it
+#   prune_plan: true

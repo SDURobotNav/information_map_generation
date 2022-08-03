@@ -1,0 +1,154 @@
+DWAPlannerROS:
+
+  #Set the velocity limits of the robot
+  max_vel_x: 0.3
+  min_vel_x: 0.05
+  max_rot_vel: 0.4
+  min_rot_vel: -0.4
+
+  #Set the acceleration limits of the robot
+  acc_lim_th: 5.0 
+  acc_lim_x: 3.5
+  # acc_lim_y: 2.5
+
+  #Set the tolerance on achieving a goal
+  xy_goal_tolerance: 0.3
+  yaw_goal_tolerance: 3.1415
+
+  #To configure how long and with what granularity trajectories are forward simulated
+  sim_time: 0.8
+  sim_granularity: 0.025
+  vx_samples: 8
+  vy_samples: 1
+  vtheta_samples: 30
+
+  #Parameters for scoring trajectories
+  path_distance_bias: 0.4
+  goal_distance_bias: 0.8
+  occdist_scale: 0.01
+
+  scaling_speed: 0.25
+
+  #How far the robot must travel before oscillation flags are reset
+  oscillation_reset_dist: 0.05
+
+  #Eat up the plan as the robot moves along it
+  prune_plan: true
+
+
+
+# DWAPlannerROS:
+#     # odom_topic: odom
+#     # odom_topic: /robot_pose_ekf/odom_combined
+#     # map_frame: /odom
+#     # map_frame: /odom_combined
+    
+#     #
+#     # Dynamics Constraint Config
+#     #
+#     # a. Kinematics:
+#     # set this to true if the robot being controlled can take y velocities and false otherwise:
+#     holonomic_robot: false
+#     # b. Velocity:
+#     # the range of x velocity for the robot in m/s
+#     max_vel_x: 0.2500
+#     min_vel_x: 0.0000
+#     # the range of y velocity for the robot in m/s
+#     max_vel_y: 0.0000
+#     min_vel_y: 0.0000
+#     # the range of translation velocity for the robot in m/s
+#     max_vel_trans: 0.4000
+#     min_vel_trans: 0.0000
+#     # the range of rotational velocity for the robot in rad/s
+#     # TODO: determine the maximum possible turning speed
+#     max_vel_theta: 0.5236
+#     min_vel_theta: 0.0000
+#     # the absolute value of the minimum in-place rotational velocity the controller will explore:
+#     # the value below equals to 5 degree / second:
+#     min_in_place_vel_theta: 0.0175
+#     # this value will only be used by MPC planner:
+#     max_vel_tracking_theta: 1.0471
+#     min_vel_tracking_theta: 0.0000
+#     max_vel_drive_theta: 5.7500
+#     min_vel_drive_theta: 0.0000
+#     # c. Acceleration:
+#     # the acceleration limit of the robot in the x direction
+#     # the value below should be determined by dynamic performance test --  1.00m/s^2:
+#     acc_lim_x: 0.7875
+#     # the acceleration limit of the robot in the y direction
+#     acc_lim_y: 0.0000
+#     # the acceleration limit of the robot for translational motion
+#     # the value below should be determined by dynamic performance test --  1.00m/s^2:
+#     acc_lim_trans: 0.7875
+#     # the acceleration limit of the robot in the theta direction
+#     # the value below should be determined by dynamic performance test --  3.00rad/s^2
+#     acc_lim_theta: 0.3491
+#     # this value will only be used by MPC planner:
+#     # the value below should be determined by dynamic performance test -- 10.60rad/s^@
+#     acc_lim_drive_theta: 9.0000
+
+#     #
+#     # Transform Global Plan Config:
+#     #
+#     # start following closest point of global plan, not first point (if different).
+#     prune_plan: false
+#     # DWA
+#     #
+#     # a. Enabler
+#     # use dynamic window approach to constrain sampling velocities to small window.
+#     use_dwa: true
+#     # b. Search Space:
+#     # the number of samples to use when exploring the x velocity space:
+#     vx_samples: 21
+#     # the number of samples to use when exploring the y velocity space
+#     vy_samples: 0
+#     # the number of samples to use when exploring the theta velocity space
+#     vth_samples: 31
+#     # c. Collision Detection:
+#     # the amount of time to roll trajectories out for in seconds:
+#     sim_time: 1.0
+#     # the granularity with which to check for collisions along each trajectory in meters
+#     sim_granularity: 0.05
+#     # the granularity with which to check for collisions for rotations in radians
+#     angular_sim_granularity: 0.05
+#     # the amount of time that the robot must stop before a collision in order for a trajectory to be considered valid in seconds
+#     stop_time_buffer: 0.5
+#     # d. Oscillation Detection:
+#     # the distance the robot must travel before oscillation flags are reset, in meters
+#     oscillation_reset_dist: 0.00
+#     # the angle the robot must turn before oscillation flags are reset, in radians
+#     oscillation_reset_angle: 0.05
+#     # e. Visualization:
+#     publish_traj_pc: true
+#     #
+#     # Evaluation Config:
+#     #
+#     # the weight for the path distance part of the cost function
+#     path_distance_bias: 0.6
+#     # the weight for the goal distance part of the cost function
+#     goal_distance_bias: 0.8
+#     # the weight for the obstacle distance part of the cost function
+#     occdist_scale: 0.01
+#     # the weight for penalizing any changes in robot heading
+#     twirling_scale: 0.0
+#     # the distance from the center point of the robot to place an additional scoring point, in meters
+#     forward_point_distance: 0.325
+#     # the absolute value of the velocity at which to start scaling the robot's footprint, in m/s
+#     scaling_speed: 0.25
+#     # the maximum factor to scale the robot's footprint by
+#     max_scaling_factor: 0.2
+
+#     #
+#     # Reach Goal Config:
+#     #
+#     # below what maximum velocity we consider the robot to be stopped in translation
+#     trans_stopped_vel: 0.01
+#     # below what maximum rotation velocity we consider the robot to be stopped in rotation
+#     theta_stopped_vel: 0.01
+#     # within what maximum distance we consider the robot to be in goal and fall back to standard DWA controller:
+#     xy_goal_tolerance: 0.10
+#     # within what maximum angle difference we consider the robot to face goal direction:
+#     yaw_goal_tolerance: 3.14159 #0.10
+#     latch_xy_goal_tolerance: true
+
+#     restore_defaults: false
